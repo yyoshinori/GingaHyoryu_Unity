@@ -4,16 +4,18 @@ using UnityEngine;
 
 public class BackgroundController : MonoBehaviour {
 
-	private float speed;
+	public float speed;
+	float size = 100;  //NOTE!
 
-	void Update () {
-		transform.Translate (0, -0.02f, 0);
-		if (transform.position.y < -6.5f ) {
-			transform.position = new Vector3 (0, 6.5f, 0);
+	// Update is called once per frame
+	void Update()
+	{
+		transform.Translate(0, 0, speed);
+
+		if (this.transform.position.z + size < 0)
+		{
+			Debug.Log("out of display");
+			this.transform.Translate(0, 0, size * 2);
 		}
-	}
-
-	public void setSpeed(float speed) {
-		this.speed = speed;
 	}
 }
